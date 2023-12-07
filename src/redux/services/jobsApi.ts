@@ -18,10 +18,18 @@ export const jobsApi = createApi({
         const queryString = querystringify(filter);
 
         return `${BASE_ENDPOINT}${queryString ? `?${queryString}` : '' }`;
-      }
+      },
+      providesTags: (result) =>
+        result?.items
+          ? [
+            ...result.items.map(({id}) => ({ type: 'Jobs', id } as const)),
+            { type: 'Jobs', id: 'LIST' },
+          ]
+          : [{ type: 'Jobs', id: 'LIST' }],
     }),
     getJob: builder.query<Job, number>({
-      query: (id: number) => `${BASE_ENDPOINT}/${id}`
+      query: (id: number) => `${BASE_ENDPOINT}/${id}`,
+      providesTags: (_, __, id) => [{ type: 'Jobs', id }],
     }),
     createJob: builder.mutation<Job, JobFormFields>({
       query: (body: JobFormFields) => ({
@@ -29,7 +37,7 @@ export const jobsApi = createApi({
         method: 'POST',
         body,
       }),
-      invalidatesTags: ['Jobs'],
+      invalidatesTags: [{ type: 'Jobs', id: 'LIST' }],
     }),
     updateJob: builder.mutation<Job, JobFormFields & Pick<Job, 'id'>>({
       query: ({ id, ...body }) => ({
@@ -37,14 +45,14 @@ export const jobsApi = createApi({
         method: 'PUT',
         body,
       }),
-      invalidatesTags: ['Jobs'],
+      invalidatesTags: (_, __, { id }) => [{ type: 'Jobs', id }],
     }),
     deleteJob: builder.mutation<any, number>({
       query: (id: number) => ({
         url: `${BASE_ENDPOINT}/${id}`,
         method: 'DELETE'
       }),
-      invalidatesTags: ['Jobs']
+      invalidatesTags: (_, __, id) => [{ type: 'Jobs', id }],
     })
   }),
 });
