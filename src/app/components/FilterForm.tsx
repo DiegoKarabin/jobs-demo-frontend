@@ -30,7 +30,7 @@ export default function FilterForm() {
 
   return (
     <>
-      <div className="filter-form-container">
+      <div className="filter-form-container mt-4">
         <form action="#" onSubmit={handleSubmit}>
           <div className='grid grid-cols-12 gap-3'>
             <div className='col-span-12'>
@@ -74,8 +74,8 @@ export default function FilterForm() {
                 <option value="Junior">
                   Junior
                 </option>
-                <option value="Mid Level">
-                  Mid Level
+                <option value="Mid-Level">
+                  Mid-Level
                 </option>
                 <option value="Senior">
                   Senior

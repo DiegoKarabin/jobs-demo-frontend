@@ -11,7 +11,7 @@ export default function JobItem({ job }: { job: Job }) {
             {job.title}
           </h5>
           <p className='text-green-800 font-bold text-xl pt-1'>
-            {job.salary}
+            $ {job.salary}
           </p>
           <p className='pt-1 font-semibold'>
             {job.level}

@@ -24,9 +24,11 @@ export default function RootLayout({
             </Link>
           </div>
         </nav>
-        <AppProvider>
-          {children}
-        </AppProvider>
+        <main className="flex min-h-screen flex-col items-center justify-between p-24">
+          <AppProvider>
+            {children}
+          </AppProvider>
+        </main>
       </body>
     </html>
   )

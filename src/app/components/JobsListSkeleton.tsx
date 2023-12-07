@@ -8,7 +8,7 @@ export function JobsListSkeleton() {
     const jobItemSkeletons = [];
 
     for (let i = 0; i < filter.size; i++) {
-      jobItemSkeletons.push(<JobItemSkeleton />);
+      jobItemSkeletons.push(<JobItemSkeleton key={i} />);
     }
 
     return jobItemSkeletons;
