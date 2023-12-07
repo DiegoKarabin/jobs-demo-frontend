@@ -5,11 +5,12 @@ import { Filter } from '@/app/types/Filter';
 import { querystringify } from '@/app/utils';
 import { JobFormFields } from '@/app/types/JobFormFields';
 
+const API_URL = process.env.API_URL;
 const BASE_ENDPOINT = 'jobs';
 
 export const jobsApi = createApi({
   reducerPath: 'jobsApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'https://shy-cyan-capybara-cuff.cyclic.app/' }),
+  baseQuery: fetchBaseQuery({ baseUrl: API_URL }),
   tagTypes: ['Jobs'],
   endpoints: (builder) => ({
     getJobs: builder.query<Page<Job>, Filter>({
