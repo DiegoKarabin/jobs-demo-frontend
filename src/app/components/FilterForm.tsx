@@ -14,18 +14,15 @@ export default function FilterForm() {
     event.preventDefault();
 
     const formData = new FormData(event.currentTarget);
-    const search = formData.get('search') as string;
-    const searchHasChanged = filter.search !== search;
-
     const newFilter: Filter = {
       ...filter,
-      search,
+      search: formData.get('search') as string,
       min_salary: +(formData.get('min_salary') as unknown as number),
       max_salary: +(formData.get('max_salary') as unknown as number),
       level: formData.get('level') as string,
       sort_field: formData.get('sort_field') as string,
       sort_direction: formData.get('sort_direction') as string,
-      page: searchHasChanged ? 1 : filter.page
+      page: 1,
     };
 
     dispatch(setFilter(newFilter));

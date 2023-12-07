@@ -19,7 +19,7 @@ export default function Pagination() {
   const totalPages = pageMetaData?.totalPages;
 
   const disablePrevButtons = currentPage == 1;
-  const disableNextButtons = currentPage == totalPages;
+  const disableNextButtons = currentPage >= totalPages;
 
   function pageButtons() {
     const pagesToShow = 5;
