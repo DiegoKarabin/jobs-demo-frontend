@@ -53,4 +53,5 @@ export const {
   useGetJobQuery,
   useCreateJobMutation,
   useUpdateJobMutation,
+  useDeleteJobMutation
 } = jobsApi;

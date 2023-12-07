@@ -1,11 +1,15 @@
 import React from 'react';
+import Link from 'next/link';
 import { rubik } from '../fonts';
 import type { Job } from '../types/Job';
 
 export default function JobItem({ job }: { job: Job }) {
   return (
     <>
-      <div className='overflow-hidden bg-white border rounded-md shadow-lg shadow-gray-200/20 border-slate-300 hover:border-violet-500 hover:-translate-y-2 transition-all duration-500 ease-in-out'>
+      <Link
+        href={`/jobs/${job.id}/show`}
+        className="block overflow-hidden bg-white border rounded-md shadow-lg shadow-gray-200/20 border-slate-300 hover:border-violet-500 hover:-translate-y-2 transition-all duration-500 ease-in-out"
+      >
         <div className='p-6'>
           <h5 className={`${rubik.className} text-2xl`}>
             {job.title}
@@ -23,7 +27,7 @@ export default function JobItem({ job }: { job: Job }) {
             {new Date(job.created_at).toDateString()}
           </p>
         </div>
-      </div>
+      </Link>
     </>
   );
 }
