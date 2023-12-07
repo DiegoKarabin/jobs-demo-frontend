@@ -1,5 +1,5 @@
 ## Description
-Jobs portal API.
+Jobs portal App.
 
 Assessment required by Soluciones JM
 
